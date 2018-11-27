@@ -28,7 +28,7 @@ function methods:send_request(method, url, options)
     return {
         status_code = tonumber(response_headers:get(":status")),
         headers = response_headers,
-        bpdy = response_body,
+        body = response_body,
     }
 end
 
