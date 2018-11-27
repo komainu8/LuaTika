@@ -7,7 +7,7 @@ function metatable.__index(client, key)
     return methods[key]
 end
 
-function methods:send_request(method, url, options)
+local function send_request(method, url, options)
     local request = http_request.new_from_uri(url)
     request.headers:upset(":method", method)
     local response_headers, response_stream
@@ -35,7 +35,7 @@ end
 function methods:execute(method, path, data)
     local url = self.base_url .. path
     if method == "get" then
-        self:send_request("GET", url)
+        send_request("GET", url)
     end
 end
 
