@@ -32,10 +32,18 @@ function methods:send_request(method, url, options)
     }
 end
 
+function methods:execute(method, path, data)
+    local url = self.base_url .. path
+    if method == "get" then
+        self:send_request("GET", url)
+    end
+end
+
 function Client.new(host, port)
     local client = {
         host = host,
         port = port,
+        base_url = "http://"..host..":"..port.."/",
     }
     setmetatable(client, metatable)
     return client
