@@ -20,7 +20,7 @@ end
 
 function Server.new()
     local server = {
-        process = Process.new("tika-server", "1.19.1")
+        process = Process.new("java -jar tika-server-1.19.1.jar")
     }
     setmetatabel(server, metatable)
     return server
