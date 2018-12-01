@@ -18,8 +18,9 @@ function methods:start()
     self:ensure_running()
 end
 
-function Server.new()
+function Server.new(tika)
     local server = {
+        tika = tika,
         process = Process.new("java -jar tika-server-1.19.1.jar")
     }
     setmetatabel(server, metatable)

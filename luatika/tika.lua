@@ -12,8 +12,8 @@ end
 local DEFAULT_HOST = "127.0.0.1"
 local DEFAULT_PORT = "9998"
 
-local function start_server()
-    tike.server = Server.new()
+local function start_server(tika)
+    tike.server = Server.new(tika)
     tika.server:start()
 end
 
