@@ -26,8 +26,9 @@ end
 
 function Process.new(command, arguments)
     local process = {
+        id = nil,
         command = command,
-        arguments = arguments,
+        arguments = arguments
     }
     setmetatable(process, metatable)
     return process
