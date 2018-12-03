@@ -36,6 +36,13 @@ function methods:start()
     self:ensure_running()
 end
 
+function methods:stop()
+    if not self.process.id then
+        return
+    end
+    self:kill()
+end
+
 function Server.new(tika)
     local server = {
         tika = tika,
