@@ -1,3 +1,6 @@
+local cqueues = require("cqueues")
+local http_request = require("http.request")
+
 local Process = require("luatika/process")
 
 local Server = {}
@@ -11,6 +14,21 @@ end
 
 function methods:spawn()
     self.process:spawn()
+end
+
+function methods:ensure_running()
+    local n_tries = 100
+    local url = string.format("http://%s:%d/tika",
+                              self.tika.client.host,
+                              self.tika.client.port)
+    local request = http_request.new_from_uri(url)
+    for i = 0, n_tries do
+      local headers, stream = request:go()
+      if headers then
+        stream:shutdown()
+      end
+      cqueues.sleep(1)
+    end
 end
 
 function methods:start()
