@@ -48,7 +48,7 @@ function Server.new(tika)
         tika = tika,
         process = Process.new("java -jar tika-server-1.19.1.jar")
     }
-    setmetatabel(server, metatable)
+    setmetatable(server, metatable)
     return server
 end
 
