@@ -1,3 +1,4 @@
+local Server = require("luatika/server")
 local Client = require("luatika/client")
 
 local Tika = {}
@@ -18,13 +19,14 @@ local function start_server(tika)
 end
 
 local function apply_options(tika, options)
-    if not options then
-        return
-    end
-    local options = options
+    local options = options or {}
     local host = options.host or DEFAULT_HOST
     local port = options.port or DEFAULT_PORT
     tika.client = Client.new(host, port)
+end
+
+function methods:start_session(callback)
+    start_server(self)
 end
 
 function Tika.new(options)
