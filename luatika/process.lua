@@ -1,6 +1,6 @@
 local unix = require("unix")
 
-local Process
+local Process = {}
 
 local methods = {}
 local metatable = {}
@@ -28,7 +28,7 @@ function Process.new(command, arguments)
     local process = {
         id = nil,
         command = command,
-        arguments = arguments
+        arguments = arguments or {}
     }
     setmetatable(process, metatable)
     return process
