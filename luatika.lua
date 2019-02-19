@@ -21,6 +21,10 @@ local function apply_options(tika, options)
   local path = options.path or TIKA_PATH
 end
 
+function method.get_version()
+    return VERSION
+end
+
 function luatika.new(options)
   local tika = {}
   apply_options(tika, options)
