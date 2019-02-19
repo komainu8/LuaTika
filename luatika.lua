@@ -13,7 +13,7 @@ local DEFAULT_HOST = "127.0.0.1"
 local DEFAULT_PORT = "9998"
 
 function metatable._index(tika, key)
-    return method[key]
+    return methods[key]
 end
 
 local function apply_options(tika, options)
