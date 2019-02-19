@@ -4,7 +4,7 @@ local Server = require("server")
 local luatika = {}
 
 local metatable = {}
-local method = {}
+local methods = {}
 
 local VERSION = "0.0.1"
 
@@ -26,15 +26,15 @@ local function apply_options(tika, options)
   tika.server = Server.new(path)
 end
 
-function method:get_version()
+function methods:get_version()
     return VERSION
 end
 
-function method:start_server()
+function methods:start_server()
   self.server:start()
 end
 
-function method:stop_server()
+function methods:stop_server()
   self.server:stop()
 end
 
