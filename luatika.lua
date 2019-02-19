@@ -1,3 +1,6 @@
+local Client = require("client")
+local Server = require("server")
+
 local luatika = {}
 
 local metatable = {}
@@ -17,12 +20,22 @@ local function apply_options(tika, options)
   local options = options or {}
   local host = options.host or DEFAULT_HOST
   local port = options.port or DEFAULT_PORT
+  tika.client = Client.new(host, port)
 
   local path = options.path or TIKA_PATH
+  tika.server = Server.new(path)
 end
 
-function method.get_version()
+function method:get_version()
     return VERSION
+end
+
+function method:start_server()
+  self.server:start()
+end
+
+function method:stop_server()
+  self.server:stop()
 end
 
 function luatika.new(options)
