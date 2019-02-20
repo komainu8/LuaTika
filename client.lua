@@ -17,8 +17,12 @@ local function send_request(url)
   send:close()
 end
 
-function send(command)
-  send_request(command)
+function methods:send(command)
+  local request_url
+  if command == "HELLO" then
+    request_url = self.base_url .. "tika"
+  end
+  send_request(request_url)
 end
 
 function Client.new(host, port)
