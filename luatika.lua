@@ -27,15 +27,19 @@ local function apply_options(tika, options)
 end
 
 function methods:get_version()
-    return VERSION
+  return VERSION
 end
 
 function methods:start_server()
-  self.server:start()
+  return self.server:start()
 end
 
 function methods:stop_server()
-  self.server:stop()
+  return self.server:stop()
+end
+
+function methods:send_request(command)
+  return self.client:send(command)
 end
 
 function luatika.new(options)
