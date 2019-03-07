@@ -12,7 +12,7 @@ local TIKA_PATH = os.getenv("APACHE_TIKA_SERVER_PATH")
 local DEFAULT_HOST = "127.0.0.1"
 local DEFAULT_PORT = "9998"
 
-function metatable._index(tika, key)
+function metatable.__index(tika, key)
     return methods[key]
 end
 
