@@ -31,7 +31,7 @@ function methods:get_version()
 end
 
 function methods:start_server()
-  return self.server:start()
+  return self.server:start(TIKA_PATH)
 end
 
 function methods:stop_server()
