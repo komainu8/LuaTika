@@ -9,7 +9,7 @@ function metatable.__index(client, key)
 end
 
 local function send_request(url)
-  send = culr.easy{
+  send = curl.easy{
     url = url,
     [curl.OPT_VERBOSE] = true,
   }
