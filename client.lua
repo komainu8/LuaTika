@@ -14,7 +14,9 @@ local function send_request(url)
     [curl.OPT_VERBOSE] = true,
   }
   send:perform()
+  local response_code = send:getinfo(curl.INFO_RESPONSE_CODE)
   send:close()
+  return response_code
 end
 
 function methods:send(command)
