@@ -38,8 +38,8 @@ function methods:stop_server()
   return self.server:stop()
 end
 
-function methods:send_request(command)
-  return self.client:send(command)
+function methods:send_request(command, path)
+  return self.client:send(command, path)
 end
 
 function luatika.new(options)

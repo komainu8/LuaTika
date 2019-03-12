@@ -10,7 +10,6 @@ function metatable.__index(process, key)
 end
 
 function methods:spawn()
-    print("BBB")
     local pid = unix.fork()
     if pid == 0 then
         local args = { self.command }
@@ -19,7 +18,6 @@ function methods:spawn()
             table.insert(args, arg)
         end
         unix.setsid()
-        print("hoge")
         unix.execvp(self.command, args)
         unix._exit(1)
     end
